@@ -20,19 +20,18 @@ public class Door implements DoorStatePublisher{
 
     public void touch(){
         currentState.touch(this);
-        _notify();
     }
     public void timeout(){
         currentState.timeout(this);
-        _notify();
     }
     public void complete(){
         currentState.complete(this);
-        _notify();
+
     }
 
     public void setCurrentState(DoorState currentState) {
         this.currentState = currentState;
+        _notify();
     }
 
     public DoorState getCurrentState() {
