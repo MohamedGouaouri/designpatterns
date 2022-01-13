@@ -1,21 +1,21 @@
 package com.example;
 
 
-import com.example.gof.behavioural.chain_of_resp.ConcreteHandler1;
-import com.example.gof.behavioural.chain_of_resp.ConcreteHandler2;
-import com.example.gof.behavioural.chain_of_resp.ConcreteHandler3;
-import com.example.td4.exo3.Closed;
-import com.example.td4.exo3.Door;
-import com.example.td4.exo3.DoorController;
+import com.example.td4.exo4.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        DoorController controller = new DoorController(new Closed());
-        Door door = new Door(new Closed());
-        door.subscribe(controller);
-        door.touch();
-        door.touch();
-        controller.show();
+        File file1 = new File(10);
+        File file2 = new File(10);
+        File file3 = new File(10);
+        Directory dir = new Directory();
+        dir.addFile(file1);
+        dir.addFile(file2);
+        Visitor sizeVisitor = new SizeVisitor();
+        Visitor nbFilesVisitor = new NBFileVisitor();
+
+        System.out.println(dir.accept(sizeVisitor));
+        System.out.println(dir.accept(nbFilesVisitor));
     }
 }
